@@ -1,5 +1,5 @@
 venv/
-media/products/
+media/products/**
 
 *.com
 *.class
