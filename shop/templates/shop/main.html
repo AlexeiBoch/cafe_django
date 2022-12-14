@@ -1,0 +1,39 @@
+{% extends 'shop/base.html' %}
+{% block title %}Cafe{% endblock %}
+{% block content %}
+    {% for category in categories %}
+        <div class="category">
+            <h1>{{ category.name }}</h1>
+            {% for product in category.products.all %}
+                <div class="product">
+                    <h3>{{ product.name }}</h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td >
+                                    <img src="{{ product.image.url }}" alt="product image">
+                                </td>
+                                <td>
+                                    <p>{{ product.description }}</p>
+                                </td>
+                                <td>
+                                    <p class="price">{{ product.price }} р.</p>
+                                    
+                                </td>
+                                <td>
+                                    <form action="{% url 'cart_add' product.id %}" method="post">
+                                        {{ cart_product_form.as_p }}
+                                        {% csrf_token %}
+                                        <button href="" class="double-border-button">Добавить в корзину</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

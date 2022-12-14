@@ -1,0 +1,60 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+    <div class="cart">
+        <h1>Корзина</h1>
+        {% if cart %}
+            <table cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><h3>Продукт</h3></th>
+                        <th><h3>Количество</h3></th>
+                        <th><h3>Цена за единицу</h3></th>
+                        <th><h3>Общая цена</h3></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart %}
+                        {% with product=item.product %}
+                            <tr>
+                                <td>
+                                    <img src="{{ product.image.url }}">
+                                </td>
+                                <td><p>{{ product.name }}</p></td>
+                                <td><p>{{ item.quantity }}</p></td>
+                                <td><p>{{ item.price }} р.</p></td>
+                                <td><p>{{ item.total_price }} р.</p></td>
+                                <td>
+                                    <a href="{% url 'cart_remove' product.id%}" class="double-border-button">
+                                        Удалить из корзины
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endwith %}
+                    {% endfor %}
+                    <tr>
+                        <td><h3>Сумма</h3></td>
+                        <td colspan="4"></td>
+                        <td><h3>{{ cart.get_total_price }} р.</h3></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <a href="{% url 'main' %}" class="double-border-button">Продолжить покупки</a>
+                <a href="{% url 'pay' %}" class="double-border-button">Оплатить</a>
+            </p>
+        {% else %}
+            <div class="empty_cart">
+                <img src="{% static 'cart.svg' %}" alt="cart">
+                <h1>Ваша корзина пуста</h1>
+                <a href="{% url 'main' %}" class="double-border-button">
+                    На главную
+                </a>
+            </div>
+        {% endif %}
+        
+    </div>
+{% endblock %}

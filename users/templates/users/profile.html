@@ -1,0 +1,10 @@
+{% extends 'shop/base.html' %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+    <div class="login">
+        <h1>Профиль</h1>
+        <h3>Добро пожаловать, {{ request.user.email }}!</h3>
+        <a href="{% url 'password_change' %}" class="double-border-button">Сменить пароль</a>
+        <a href="{% url 'logout' %}" class="double-border-button">Выйти</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Списибо за заказ{% endblock %}
+{% block content %}
+<div class="empty_cart">
+    <br>
+    <br>
+    <img src="{% static 'coffee.jpg' %}" alt="cart">
+    <h1>Спасибо за заказ!</h1>
+    <a href="{% url 'main' %}" class="double-border-button">
+        На главную
+    </a>
+</div>
+{% endblock %}
