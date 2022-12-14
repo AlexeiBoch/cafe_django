@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rrn^r!x@qd3m3#^a51wyv5r0ch1l=n4#9ec-lmo&&jw$e#$1=6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["panchenko7.pythonanywhere.com", ]
 
 AUTH_USER_MODEL = 'users.User'
 
